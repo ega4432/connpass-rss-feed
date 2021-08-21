@@ -80,14 +80,12 @@ const generateRssFeed = async () => {
   }
 
   events?.forEach((e: Event) => {
-    const html: string = e.description.slice(0, 255)
     if (date > new Date(e.started_at)) {
       feed.addItem({
         title: e.title,
-        description: html,
-        id: String(e.event_id),
+        description: e.catch,
+        id: e.event_url,
         link: e.event_url,
-        content: html,
         date: new Date(e.started_at)
       })
     }
