@@ -36,7 +36,7 @@ type Event = {
 }
 
 const getEvents = async () => {
-  const endpoint = 'https://connpass.com/api/v1/event/?nickname=yoshimitsu_egashira'
+  const endpoint = `https://connpass.com/api/v1/event/?nickname=${process.env.CONNPASS_USER_NICKNAME}&order=2`
   const res = await fetch(endpoint)
   const events = await res.json()
 
@@ -48,7 +48,7 @@ const getEvents = async () => {
 }
 
 const generateRssFeed = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || ''
+  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'localhost:3000'
   const date = new Date()
   const author: Author = {
     name: 'ysmtegsr',
@@ -81,14 +81,16 @@ const generateRssFeed = async () => {
 
   events?.forEach((e: Event) => {
     const html: string = e.description.slice(0, 255)
-    feed.addItem({
-      title: e.title,
-      description: html,
-      id: String(e.event_id),
-      link: e.event_url,
-      content: html,
-      date: new Date(e.started_at)
-    })
+    if (date > new Date(e.started_at)) {
+      feed.addItem({
+        title: e.title,
+        description: html,
+        id: String(e.event_id),
+        link: e.event_url,
+        content: html,
+        date: new Date(e.started_at)
+      })
+    }
   })
 
   fs.mkdirSync('./public/rss', { recursive: true })
