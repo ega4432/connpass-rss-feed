@@ -60,7 +60,7 @@ const generateRssFeed = async () => {
     id: baseUrl,
     link: baseUrl,
     language: 'ja',
-    image: `${baseUrl}/favicon.png`,
+    image: `${baseUrl}/favicon.ico`,
     copyright: `All rights reserved ${date.getFullYear()}, ${author.name}`,
     updated: date,
     feedLinks: {
