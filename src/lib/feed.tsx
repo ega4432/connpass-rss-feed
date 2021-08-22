@@ -40,9 +40,7 @@ const getEvents = async () => {
   const res = await fetch(endpoint)
   const events = await res.json()
 
-  if (!events) {
-    return { notFound: true }
-  }
+  if (!events) { return { notFound: true } }
 
   return events.events
 }
@@ -75,9 +73,7 @@ const generateRssFeed = async () => {
 
   const events = await getEvents()
 
-  if (events.notFound) {
-    console.log('not found', events)
-  }
+  if (!events.length) { return null }
 
   events?.forEach((e: Event) => {
     if (date > new Date(e.started_at)) {
@@ -86,7 +82,8 @@ const generateRssFeed = async () => {
         description: e.catch,
         id: e.event_url,
         link: e.event_url,
-        date: new Date(e.started_at)
+        date: new Date(e.started_at),
+        content: e.description.slice(0, 255)
       })
     }
   })
