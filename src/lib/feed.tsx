@@ -36,7 +36,7 @@ type Event = {
 }
 
 const getEvents = async () => {
-  const endpoint = `https://connpass.com/api/v1/event/?nickname=${process.env.CONNPASS_USER_NICKNAME}&order=2`
+  const endpoint = `https://connpass.com/api/v1/event/?nickname=${process.env.CONNPASS_USER_NICKNAME}&order=2&count=30`
   const res = await fetch(endpoint)
   const events = await res.json()
 
