@@ -16,9 +16,9 @@ const generateRssFeed = async () => {
   const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'localhost:3000'
   const date = new Date()
   const author: Author = {
-    name: 'ysmtegsr',
-    email: 'ysmtegsr@gmail.com',
-    link: 'https://ysmtegsr.com'
+    name: 'ega4432',
+    email: 'hello@egashira.dev',
+    link: 'https://egashira.dev'
   }
 
   const feed = new Feed({
