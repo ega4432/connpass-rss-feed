@@ -40,3 +40,6 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ steps.my_app.outputs.token }}
 
+      - name: Skip
+        if: cancelled()
+        run: echo "Skip merge phase"
