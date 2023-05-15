@@ -15,7 +15,7 @@
     "rss": "^1.2.2"
   },
   "devDependencies": {
-    "@types/node": "^18.15.11",
+    "@types/node": "^20.1.4",
     "@types/react": "17.0.19",
     "@types/rss": "^0.0.30",
     "eslint": "8.38.0",
