@@ -19,7 +19,7 @@
     "@types/react": "17.0.19",
     "@types/rss": "^0.0.30",
     "eslint": "8.38.0",
-    "eslint-config-next": "13.3.2",
+    "eslint-config-next": "13.4.5",
     "feed": "^4.2.2",
     "typescript": "5.0.4"
   }
